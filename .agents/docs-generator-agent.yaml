@@ -3,10 +3,10 @@ description: >
   Autonomiczny agent generujący dokumentację dla projektu Mailer.
   Analizuje kod, testy i commit messages, generując zawartość do dokumentacji.
 
-model: claude-3-5-sonnet
+model: claude-3-5-sonnet  # lub dostępny model
 
 purpose: |
-  Agent skanuje repozytorium i generuje:
+  Agent skanuje repozytorium i generbuje:
   - API documentation
   - Installation guides
   - Usage examples
@@ -26,14 +26,20 @@ activation:
     - "document this"
 
 workflow:
-  - analyze: "Zbierz informacje o modulach, funkcjach, klasach"
-  - refactor: "Przygotuj strukturę dokumentacji"
-  - test: "Sprawdź poprawność contentu i przykładów"
-  - document: "Wygeneruj Markdown i przykłady"
-
-restrictions:
-  - noBreakingChanges: true
-  - maintainBackwardCompat: true
+  - step1: Scan target code
+    description: Zbierz informacje o modulach, funkcjach, klasach
+  
+  - step2: Extract patterns
+    description: Identyfikuj wzorce, zależności, API
+  
+  - step3: Generate docs
+    description: Stwórz dokumentację w formacie Markdown
+  
+  - step4: Create examples
+    description: Dodaj praktyczne przykłady
+  
+  - step5: Validate
+    description: Sprawdź completeness i accuracy
 
 tools:
   - fileRead
@@ -47,6 +53,12 @@ memory:
   - apiSignatures
   - examples
   - standards
+
+restrictions:
+  - mustIncludeTypeHints: true
+  - mustFollowPEP257: true
+  - noSpamming: true
+  - validateMarkdown: true
 
 output:
   format: markdown

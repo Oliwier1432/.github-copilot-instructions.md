@@ -6,7 +6,6 @@
 ## Skills (Umiejętności)
 1. **email-validation** – Walidacja adresów email
 2. **mailer-complete-testing** – Kompletne testowanie
-3. **email-templates** – Zarządzanie szablonami email
 
 Użycie:
 ```
