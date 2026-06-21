@@ -1,0 +1,22 @@
+name: email-templates
+description: Skill dla tworzenia i testowania szablonów email
+keywords:
+  - templates
+  - email
+  - html
+  - plaintext
+  - rendering
+topics:
+  - templating
+  - email
+  - html
+  - testing
+applyTo:
+  - path: "**/templates/**"
+  - path: "**/*template*.py"
+languageDetection:
+  preferredLanguage: python
+  patterns:
+    - "template"
+    - "html"
+    - "jinja"
